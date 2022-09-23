@@ -9,12 +9,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    //private lateinit var resultText : TextView
+    //resultText = findViewById(R.id.resultText)  // initialize in onCreate
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
 
 
         mFactorial(5)
@@ -47,6 +50,35 @@ class MainActivity : AppCompatActivity() {
         println("Hans N. title: " + hansNiemann.title)
         println("Hans N. opening: " + hansNiemann.opening)
         println("Hans N. elo: " + hansNiemann.getElo())
+
+
+        // Nullability
+        // Nullable (?) && Non-null
+
+        var myPoem: String? = null
+        var myAward: Int? = null
+
+        myPoem = "Covenant"
+
+
+        // 1) Null safety
+
+        if (myPoem != null) {
+            println("Poem: " + myPoem);
+        } else println("Null")
+
+        if (myAward != null) {
+            println("Award: " + myPoem)
+        } else println("0")
+
+        // 2) Safe call
+
+        println(myAward?.compareTo(13))
+
+        // 3) elvis
+
+        val awardCount = myAward?.compareTo(11) ?: -1
+        println("award count: $awardCount")
 
 
     }
